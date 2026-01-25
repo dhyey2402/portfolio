@@ -233,7 +233,7 @@ body {
 }
 
 .hero-greeting {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     color: var(--accent-amber);
     margin-bottom: 0.75rem;
     letter-spacing: 0.18em;
