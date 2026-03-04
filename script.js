@@ -86,13 +86,37 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll('.project-card, .skill-category, .stat-item');
+    const animateElements = document.querySelectorAll('.project-card, .skill-card, .stat-item');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+
+    // Skills filter buttons
+    const filterButtons = document.querySelectorAll('.skills-filter-btn');
+    const skillCards = document.querySelectorAll('.skill-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.filter;
+
+            // Update active button state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Show / hide cards
+            skillCards.forEach(card => {
+                const cardCategories = card.dataset.category || '';
+                if (category === 'all' || cardCategories.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     });
 
     // Typing animation for hero title
