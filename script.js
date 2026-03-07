@@ -137,10 +137,13 @@ const modalBackdrop = document.getElementById('modal-backdrop');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalCard = document.getElementById('modal-card');
 
-const titleEls = document.querySelectorAll('.project-title-btn');
+const titleEls = document.querySelectorAll('.project-card-btn');
 
 titleEls.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+        // Prevent modal opening when clicking action links inside the card
+        if (e.target.closest('a') || e.target.closest('button')) return;
+
         // Populate Strings
         document.getElementById('modal-title').textContent = btn.getAttribute('data-p-title');
         document.getElementById('modal-overview').textContent = btn.getAttribute('data-p-overview');
