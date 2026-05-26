@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dhyey Patel | Software Engineer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>emailjs.init('mdvKD3T87bppOfEOe');</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#22d3ee",
+              secondary: "#a78bfa",
+              accent: "#34d399",
+              surface: "#030712",
+              "surface-card": "#080d1e",
+              "surface-light": "#0d1530",
+            },
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              sans: ["DM Sans", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface text-white antialiased">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="custom-cursor-dot"></div>
+    <div class="cursor-ring" id="custom-cursor-ring"></div>
+
+    <!-- Background Layer -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <canvas id="bg-particle-canvas" class="absolute inset-0 z-0 pointer-events-none opacity-70"></canvas>
+      <div class="grid-overlay"></div>
+      <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-nav transition-all duration-500" id="navbar">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <a href="#home" class="logo-mark flex items-center gap-3 group">
+          <div class="logo-icon">
+            <span>D</span>
+          </div>
+          <span class="font-display font-700 text-lg tracking-tight text-white">Dhyey<span class="text-primary">.</span></span>
+        </a>
+
+        <ul class="hidden md:flex gap-10 items-center font-sans text-sm font-medium" id="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#expertise" class="nav-link">Expertise</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li>
+            <a href="assets/resume.pdf" download="Dhyey_Patel_Resume.pdf" class="btn-secondary py-2 px-4 text-xs flex items-center gap-2 transition-all">
+              <i class="fas fa-download"></i> Resume
+            </a>
+          </li>
+          <li><a href="#contact" class="btn-primary ml-2">Let's Talk</a></li>
+        </ul>
+
+        <button class="md:hidden text-2xl z-50 focus:outline-none text-white" id="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="fixed inset-0 bg-surface/98 backdrop-blur-2xl z-40 hidden flex-col items-center justify-center opacity-0 transition-opacity duration-300" id="mobile-menu">
+      <ul class="flex flex-col gap-10 text-center text-3xl font-display font-700">
+        <li><a href="#home" class="mobile-link hover:text-primary transition-colors">Home</a></li>
+        <li><a href="#about" class="mobile-link hover:text-primary transition-colors">About</a></li>
+        <li><a href="#expertise" class="mobile-link hover:text-primary transition-colors">Expertise</a></li>
+        <li><a href="#projects" class="mobile-link hover:text-primary transition-colors">Projects</a></li>
+        <li>
+          <a href="assets/resume.pdf" download="Dhyey_Patel_Resume.pdf" class="mobile-link hover:text-primary transition-colors flex items-center justify-center gap-2">
+            <i class="fas fa-download text-2xl"></i> Resume
+          </a>
+        </li>
+        <li><a href="#contact" class="mobile-link text-primary">Let's Talk</a></li>
+      </ul>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- HERO SECTION                                        -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="home" class="min-h-screen flex items-center relative pt-24 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center w-full">
+
+        <div class="hero-content">
+          <div class="status-badge mb-8 animate-fade-in-up">
+            <span class="status-dot"></span>
+            Available for new opportunities
+          </div>
+
+          <h1 class="font-display text-[clamp(3rem,8vw,5.5rem)] font-800 leading-[0.95] tracking-tight mb-6 animate-fade-in-up" style="animation-delay:0.1s">
+            Engineer<span class="text-stroke">ing</span><br/>
+            <span class="gradient-text">Digital</span><br/>
+            Experiences
+          </h1>
+
+          <p class="text-slate-400 text-lg md:text-xl font-sans font-300 leading-relaxed max-w-lg mb-10 animate-fade-in-up" style="animation-delay:0.2s">
+            I'm <strong class="text-white font-500">Dhyey Patel</strong>, a Software Engineer specializing in backend systems, scalable web applications, and Python-driven solutions.
+          </p>
+
+          <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay:0.3s">
+            <a href="#projects" class="btn-primary group">
+              Explore Work
+              <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="assets/resume.pdf" download="Dhyey_Patel_Resume.pdf" class="btn-secondary flex items-center gap-2">
+              <i class="fas fa-download text-lg"></i>
+              Resume
+            </a>
+            <a href="https://github.com/dhyey2402" target="_blank" class="btn-secondary flex items-center gap-2">
+              <i class="fab fa-github text-xl"></i>
+              GitHub
+            </a>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="flex gap-10 mt-14 pt-10 border-t border-white/5 animate-fade-in-up" style="animation-delay:0.4s">
+            <div>
+              <div class="font-display text-3xl font-700 text-white">3+</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">Projects</div>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-700 text-white">91.2%</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">ML Accuracy</div>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-700 gradient-text">Open</div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">To Hire</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Visual -->
+        <div class="relative hidden lg:block hero-visual z-10 animate-fade-in-up" style="animation-delay:0.2s">
+          <div class="terminal-glow-wrap">
+            <div class="terminal-window tilt-card">
+              <div class="terminal-header">
+                <div class="flex items-center gap-2">
+                  <span class="terminal-dot" style="background:#ff5f56"></span>
+                  <span class="terminal-dot" style="background:#ffbd2e"></span>
+                  <span class="terminal-dot" style="background:#27c93f"></span>
+                  <span class="font-mono text-xs text-slate-500 ml-3">dhyey@backend-core: ~</span>
+                </div>
+                <div class="font-mono text-xs text-slate-600">python3</div>
+              </div>
+              <div class="terminal-body font-mono text-sm leading-relaxed" id="hero-terminal-body">
+                <span class="text-emerald-400">dhyey@backend-core:~$</span> python3 -m server_pipeline<br/>
+                <span class="text-slate-600">[INIT] Loading ensemble prediction weights... Done (91.2% ROC-AUC)</span><br/>
+                <span class="text-slate-600">[OK]   PostgreSQL connection established.</span><br/>
+                <span class="text-slate-600">[OK]   Server running on port 8000</span><br/>
+                <span class="text-primary font-500">&gt;&gt;&gt;</span> <span id="typed-code"></span><span class="terminal-cursor"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating chips -->
+          <div class="float-chip chip-top-right">
+            <i class="fab fa-python text-yellow-400"></i> Python 3.11
+          </div>
+          <div class="float-chip chip-bottom-left">
+            <i class="fas fa-database text-primary"></i> PostgreSQL
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <div class="scroll-indicator">
+          <div class="scroll-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- ABOUT SECTION                                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="about" class="py-32 relative z-10">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="section-header mb-16">
+          <span class="section-number">01</span>
+          <h3 class="section-title">Who I Am.</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[260px]">
+
+          <!-- Main Bio -->
+          <div class="bento-card md:col-span-2 md:row-span-2 p-10 flex flex-col justify-center tilt-card bento-glow-primary">
+            <div class="bento-icon mb-8">
+              <i class="fas fa-terminal text-primary text-xl"></i>
+            </div>
+            <h4 class="font-display text-2xl font-700 mb-4 text-white">Backend Engineer &amp; AI Developer</h4>
+            <p class="text-slate-400 text-lg leading-relaxed mb-5 font-sans">
+              I am a Computer Science Engineering student obsessed with crafting efficient backend systems and seamless web apps. My expertise lies in Python, JavaScript, and building robust architectures that scale.
+            </p>
+            <p class="text-slate-400 text-lg leading-relaxed font-sans">
+              When I'm not writing code, I'm exploring new AI/ML technologies or optimizing algorithms just for fun.
+            </p>
+          </div>
+
+          <!-- Location / Map -->
+          <div class="bento-card p-6 relative overflow-hidden group tilt-card bento-glow-secondary">
+            <iframe 
+              class="location-map-iframe" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14686.791783313264!2d72.5713621!3d23.022505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fccd11d0d9ec752!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="location-map-overlay"></div>
+            <div class="relative h-full flex flex-col justify-between z-10">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary pulse-dot"></span>
+                <span class="text-xs font-mono font-500 uppercase tracking-wider text-primary">Live · IST</span>
+              </div>
+              <div class="mt-auto">
+                <h4 class="font-display text-xl font-700 text-white mb-1 flex items-center gap-2">
+                  <i class="fas fa-map-marker-alt text-primary text-sm"></i> Ahmedabad, India
+                </h4>
+                <p class="text-xs text-slate-400 font-sans leading-relaxed">
+                  Based in Gujarat, open to remote work &amp; relocation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Card -->
+          <div class="bento-card p-6 flex flex-col justify-between relative overflow-hidden group tilt-card bento-glow-accent">
+            <!-- Link Overlay -->
+            <a href="https://linkedin.com/in/patel-dhyey-1b304b306/" target="_blank" class="absolute inset-0 z-20" aria-label="LinkedIn Profile"></a>
+            
+            <div class="relative flex items-center gap-4">
+              <div class="profile-avatar-wrap">
+                <img src="assets/images/profile-photo.webp" alt="Dhyey Patel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div class="avatar-ring-pulse"></div>
+              </div>
+              <div>
+                <h4 class="font-display font-700 text-white text-lg">Dhyey Patel</h4>
+                <p class="text-xs text-slate-400 font-sans mt-0.5">Software Engineer</p>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-white/5 flex justify-between items-center relative z-10">
+              <span class="text-xs text-slate-400 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Available to Hire
+              </span>
+              <span class="text-xs font-600 text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+                LinkedIn <i class="fas fa-arrow-right text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="bento-card p-6 md:col-span-2 flex flex-col justify-center tilt-card">
+            <h4 class="font-display text-xl font-700 mb-5 flex items-center gap-3 text-white">
+              <i class="fas fa-graduation-cap text-secondary"></i> Education
+            </h4>
+            <div class="education-item">
+              <div class="edu-line"></div>
+              <div class="flex justify-between items-start">
+                <div>
+                  <h5 class="font-display font-700 text-white text-lg">B.Tech in Computer Science</h5>
+                  <p class="text-slate-400 text-sm mt-1 font-sans">Karnavati University / UnitedWorld Institute of Technology</p>
+                </div>
+                <span class="font-mono text-xs px-3 py-1.5 rounded-md text-slate-300" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">2024 – 2028</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- EXPERTISE SECTION                                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="expertise" class="py-32 relative z-10 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="section-header text-right mb-16">
+          <span class="section-number">02</span>
+          <h3 class="section-title">Tech Stack.</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <div class="skill-category-card group bento-glow-primary">
+            <div class="skill-icon-box" style="--icon-color: #38bdf8">
+              <i class="fas fa-code"></i>
+            </div>
+            <h4 class="font-display text-lg font-700 mb-4 text-white">Languages</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill tech-pill-interactive" data-tech="python">Python</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="javascript">JavaScript</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="sql">SQL</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="html-css">HTML/CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card group bento-glow-secondary">
+            <div class="skill-icon-box" style="--icon-color: #a78bfa">
+              <i class="fas fa-server"></i>
+            </div>
+            <h4 class="font-display text-lg font-700 mb-4 text-white">Backend &amp; APIs</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill tech-pill-interactive" data-tech="django">Django</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="flask">Flask</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="rest-api">REST APIs</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="jwt">JWT</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card group bento-glow-accent">
+            <div class="skill-icon-box" style="--icon-color: #34d399">
+              <i class="fas fa-database"></i>
+            </div>
+            <h4 class="font-display text-lg font-700 mb-4 text-white">Data &amp; DBs</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill tech-pill-interactive" data-tech="postgresql">PostgreSQL</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="mysql">MySQL</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="pandas">Pandas</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="numpy">NumPy</span>
+            </div>
+          </div>
+
+          <div class="skill-category-card group bento-glow-primary">
+            <div class="skill-icon-box" style="--icon-color: #fb923c">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4 class="font-display text-lg font-700 mb-4 text-white">AI / ML</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill tech-pill-interactive" data-tech="tensorflow">TensorFlow</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="pytorch">PyTorch</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="scikit-learn">Scikit-learn</span>
+              <span class="tech-pill tech-pill-interactive" data-tech="nlp">NLP</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Marquee -->
+        <div class="mt-20 marquee-container">
+          <div class="animate-marquee">
+            <span>GIT</span><span class="sep">·</span>
+            <span>LINUX</span><span class="sep">·</span>
+            <span>REST APIs</span><span class="sep">·</span>
+            <span>AWS</span><span class="sep">·</span>
+            <span>FASTAPI</span><span class="sep">·</span>
+            <span>DOCKER</span><span class="sep">·</span>
+            <span>SQL</span><span class="sep">·</span>
+            <span>DJANGO</span><span class="sep">·</span>
+            <span>GIT</span><span class="sep">·</span>
+            <span>LINUX</span><span class="sep">·</span>
+            <span>REST APIs</span><span class="sep">·</span>
+            <span>AWS</span><span class="sep">·</span>
+            <span>FASTAPI</span><span class="sep">·</span>
+            <span>DOCKER</span><span class="sep">·</span>
+            <span>SQL</span><span class="sep">·</span>
+            <span>DJANGO</span><span class="sep">·</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PROJECTS SECTION                                    -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="projects" class="py-32 relative z-10">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="section-header mb-16">
+          <span class="section-number">03</span>
+          <h3 class="section-title">Featured Projects.</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+          <!-- Project: Sales Analytics -->
+          <div class="project-card group cursor-pointer project-card-btn tilt-card"
+            data-p-title="Sales Analytics Dashboard"
+            data-p-overview="Built a Sales Analytics Dashboard using Flask and MySQL that processes sales data with Pandas and generates interactive visualizations (Plotly) to analyze total and average sales across regions."
+            data-p-tech-backend="Flask, Pandas"
+            data-p-tech-db="MySQL"
+            data-p-tech-frontend="HTML/CSS, JS, Plotly"
+            data-p-features="Interactive visualizations using Plotly|Data processing with Pandas|Backend with Flask and MySQL"
+            data-p-architecture="Frontend (Plotly/JS) ➔ Flask API ➔ Pandas ➔ MySQL"
+            data-p-highlights="Data processing pipeline|Interactive dashboard logic|REST API for data fetching"
+            data-p-challenges="Handling large datasets efficiently in Pandas. Solution: Optimized queries and vectorized Pandas operations."
+            data-p-github="https://github.com/dhyey2402/bold_bytes_Sales_Region_Performance"
+            data-p-demo="#"
+            title="Click to view details">
+            <div class="project-img-wrap">
+              <div class="project-img-overlay"></div>
+              <img src="assets/images/img2.png" alt="Sales Analytics Dashboard" class="project-img" />
+              <div class="project-links">
+                <a href="https://github.com/dhyey2402/bold_bytes_Sales_Region_Performance" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+              <div class="project-category-tag">Analytics</div>
+            </div>
+            <div class="project-body">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-display text-xl font-700 text-white group-hover:text-primary transition-colors duration-300">Sales Analytics</h4>
+                <span class="project-status-badge">Completed</span>
+              </div>
+              <p class="text-slate-400 text-sm font-sans leading-relaxed mb-5 line-clamp-2">
+                Sales Dashboard built with Flask & MySQL processing large metrics using vectorized Pandas pipelines.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">Plotly</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: EduFusionERP -->
+          <div class="project-card group cursor-pointer project-card-btn tilt-card"
+            data-p-title="EduFusionERP"
+            data-p-overview="A comprehensive educational management ERP system designed to streamline academic operations and enhance communication."
+            data-p-tech-backend="Flask, SQLAlchemy"
+            data-p-tech-db="PostgreSQL"
+            data-p-tech-frontend="HTML, JS, CSS"
+            data-p-features="Student and staff management|Attendance tracking|Responsive dashboard"
+            data-p-architecture="Client (Browser) ➔ Flask Backend ➔ SQLAlchemy ORM ➔ PostgreSQL"
+            data-p-highlights="Role-based access control (RBAC)|Efficient database schema for student records|Secure authentication"
+            data-p-challenges="Designing a scalable DB schema for complex relationships. Solution: Leveraged SQLAlchemy relationships and lazy loading."
+            data-p-github="https://github.com/dhyey2402/EduFusionERP"
+            data-p-demo="#"
+            title="Click to view details">
+            <div class="project-img-wrap">
+              <div class="project-img-overlay"></div>
+              <img src="assets/images/edufusion_card_img.png" alt="EduFusionERP" class="project-img" />
+              <div class="project-links">
+                <a href="https://github.com/dhyey2402/EduFusionERP" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+              <div class="project-category-tag">ERP System</div>
+            </div>
+            <div class="project-body">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-display text-xl font-700 text-white group-hover:text-secondary transition-colors duration-300">EduFusionERP</h4>
+                <span class="project-status-badge">Completed</span>
+              </div>
+              <p class="text-slate-400 text-sm font-sans leading-relaxed mb-5 line-clamp-2">
+                A comprehensive educational ERP system designed to streamline operations and administrative control.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">SQLAlchemy</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">JS/CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project: JalDarshi AI -->
+          <div class="project-card group cursor-pointer project-card-btn tilt-card featured-project"
+            data-p-title="JalDarshi AI: Multi-Variable Flood Prediction System"
+            data-p-overview="A real-time AI-powered disaster management platform that predicts flood risks with 91.2% accuracy. Built using a Django/React stack, it utilizes a sophisticated Voting Ensemble (XGBoost, Random Forest, Gradient Boosting) to analyze 70+ environmental features—including rainfall intensity, soil saturation, and estimated river levels."
+            data-p-tech-backend="Python 3.11, Django 5.2, DRF"
+            data-p-tech-db="PostgreSQL 15"
+            data-p-tech-frontend="React 18, Tailwind CSS, Recharts"
+            data-p-features="Ensemble ML Prediction (91.2% accuracy)|7-Day Forecasting using ARIMA|Real-time IoT Integration (Open-Meteo/USGS)|Interactive Command Center|Disaster Simulation Tool"
+            data-p-architecture="Data Ingestion Layer ➔ AI Engine (70+ features) ➔ Voting Ensemble Pipeline ➔ React Presentation Layer"
+            data-p-highlights="Soft-Voting Classifier (XGBoost, RF, GB)|Advanced Feature Engineering (rolling stats, lag features)|Hydrological Physics Baseflow Logic|High-Order Validation (ROC-AUC, RMSE)"
+            data-p-challenges="Data Scarcity: Physics-based estimation for river levels. Complexity: XGBoost ensemble for non-linear relationships. Latency: Pre-computed vectors for <100ms response."
+            data-p-github="https://github.com/dhyey2402/JalDarshi-AI"
+            data-p-demo="#"
+            title="Click to view details">
+            <div class="project-img-wrap">
+              <div class="project-img-overlay"></div>
+              <img src="assets/images/jaldarshi_card_img.png" alt="JalDarshi AI" class="project-img" />
+              <div class="project-links">
+                <a href="https://github.com/dhyey2402/JalDarshi-AI" target="_blank" class="project-link-btn" onclick="event.stopPropagation()">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+              <div class="project-category-tag">AI / ML</div>
+              <div class="featured-badge">⭐ Featured</div>
+            </div>
+            <div class="project-body">
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-display text-xl font-700 text-white group-hover:text-accent transition-colors duration-300">JalDarshi AI</h4>
+                <span class="project-status-badge production">Production Ready</span>
+              </div>
+              <p class="text-slate-400 text-sm font-sans leading-relaxed mb-5 line-clamp-2">
+                Real-time AI flood forecasting ecosystem powered by a Voting Ensemble over 70+ physics features.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">XGBoost</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- CONTACT SECTION                                     -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="contact" class="py-32 relative z-10">
+      <div class="max-w-6xl mx-auto px-6">
+
+        <div class="contact-card">
+          <div class="contact-glow-top"></div>
+          <div class="contact-glow-bottom"></div>
+
+          <div class="grid md:grid-cols-2 gap-16 relative z-10">
+
+            <div>
+              <div class="section-header mb-8">
+                <span class="section-number">04</span>
+                <h3 class="font-display text-4xl md:text-5xl font-800 leading-tight text-white">
+                  Let's build something<br/>
+                  <span class="gradient-text">together.</span>
+                </h3>
+              </div>
+
+              <p class="text-slate-400 mb-10 font-sans text-lg leading-relaxed">
+                Always open for exciting opportunities and collabs. If you have a project in mind, don't hesitate to reach out!
+              </p>
+
+              <div class="space-y-5 mb-10">
+                <a href="mailto:dhyeyp060@gmail.com" class="contact-info-row group">
+                  <div class="contact-icon-box group-hover:bg-primary group-hover:border-primary/50 transition-all duration-300">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs text-slate-500 uppercase tracking-widest mb-0.5">Mail me at</div>
+                    <div class="text-white font-500 text-base">dhyeyp060@gmail.com</div>
+                  </div>
+                </a>
+
+                <div class="contact-info-row">
+                  <div class="contact-icon-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs text-slate-500 uppercase tracking-widest mb-0.5">Location</div>
+                    <div class="text-white font-500 text-base">Ahmedabad, India</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-3">
+                <a href="https://github.com/dhyey2402" target="_blank" class="social-btn">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/patel-dhyey-1b304b306/" target="_blank" class="social-btn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://instagram.com/dhyeypatel718/" target="_blank" class="social-btn">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="contactForm" class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="input-group">
+                  <input type="text" id="name" name="from_name" required placeholder=" " class="form-input" />
+                  <label for="name" class="form-label">Name</label>
+                </div>
+                <div class="input-group">
+                  <input type="email" id="email" name="from_email" required placeholder=" " class="form-input" />
+                  <label for="email" class="form-label">Email</label>
+                </div>
+              </div>
+              <div class="input-group">
+                <input type="text" id="subject" name="subject" required placeholder=" " class="form-input" />
+                <label for="subject" class="form-label">Subject</label>
+              </div>
+              <div class="input-group form-textarea">
+                <textarea id="message" name="message" rows="4" required placeholder=" " class="form-input resize-none"></textarea>
+                <label for="message" class="form-label">Message</label>
+              </div>
+              <button type="submit" class="btn-primary w-full mt-2 flex justify-center items-center gap-2 group">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 relative z-10 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-slate-600 text-sm font-sans">&copy; <span id="year"></span> Dhyey Patel. All rights reserved.</p>
+        <p class="text-slate-600 text-sm font-sans flex items-center gap-2">
+          Crafted with <i class="fas fa-heart text-red-500/70 animate-pulse"></i> &amp; code.
+        </p>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- PROJECT MODAL                                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+      <div class="absolute inset-0 bg-black/75 backdrop-blur-lg" id="modal-backdrop"></div>
+
+      <div id="modal-card" class="modal-card relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 md:p-10 shadow-2xl transform scale-95 transition-transform duration-300 translate-y-4">
+        <button id="modal-close-btn" class="modal-close-btn sticky float-right z-20">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="mb-6 pr-12">
+          <h3 id="modal-title" class="font-display text-3xl md:text-4xl font-800 mb-4 gradient-text"></h3>
+          <p id="modal-overview" class="text-slate-400 font-sans text-lg leading-relaxed"></p>
+        </div>
+
+        <div class="modal-tabs-wrap" id="modal-tabs">
+          <div class="modal-tab active" data-tab="overview">Overview</div>
+          <div class="modal-tab" data-tab="architecture">System Architecture</div>
+          <div class="modal-tab" data-tab="playground">API Sandbox</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+          <div class="md:col-span-2 space-y-6">
+
+            <div id="tab-content-overview" class="tab-pane space-y-8">
+              <div>
+                <h4 class="font-display text-lg font-700 mb-4 text-white flex items-center gap-2">
+                  <i class="fas fa-star text-primary text-sm"></i> Key Features
+                </h4>
+                <ul id="modal-features" class="space-y-2 text-slate-400 font-sans text-sm list-none"></ul>
+              </div>
+              <div>
+                <h4 class="font-display text-lg font-700 mb-4 text-white flex items-center gap-2">
+                  <i class="fas fa-lightbulb text-secondary text-sm"></i> Technical Highlights
+                </h4>
+                <ul id="modal-highlights" class="space-y-2 text-slate-400 font-sans text-sm list-none"></ul>
+              </div>
+              <div>
+                <h4 class="font-display text-lg font-700 mb-4 text-white flex items-center gap-2">
+                  <i class="fas fa-shield-alt text-accent text-sm"></i> Challenges &amp; Solutions
+                </h4>
+                <p id="modal-challenges" class="text-slate-400 font-sans leading-relaxed text-sm p-5 rounded-xl" style="background:rgba(34,211,238,0.03);border:1px solid rgba(34,211,238,0.1)"></p>
+              </div>
+            </div>
+
+            <div id="tab-content-architecture" class="tab-pane space-y-6 hidden">
+              <div>
+                <h4 class="font-display text-lg font-700 mb-4 text-white flex items-center gap-2">
+                  <i class="fas fa-network-wired text-secondary text-sm"></i> System Architecture Flow
+                </h4>
+                <p class="text-slate-500 font-sans text-xs mb-4">Detailed ingestion, orchestration, and storage components mapped for this project stack.</p>
+                <div class="arch-diagram-box">
+                  <div id="modal-architecture" class="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-wrap"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="tab-content-playground" class="tab-pane space-y-4 hidden">
+              <h4 class="font-display text-lg font-700 mb-2 text-white flex items-center gap-2">
+                <i class="fas fa-terminal text-primary text-sm"></i> Simulated API Console
+              </h4>
+              <p class="text-xs text-slate-500 font-sans mb-4">Interact with simulated live endpoints from this application stack.</p>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <select id="playground-endpoint-select" class="form-input flex-1 bg-surface-card text-sm text-white focus:outline-none focus:border-primary rounded-xl px-4 py-3"></select>
+                <button id="playground-execute-btn" class="btn-primary flex items-center gap-2 text-sm px-6 py-3 whitespace-nowrap">
+                  Execute <i class="fas fa-play text-[10px]"></i>
+                </button>
+              </div>
+              <div class="console-screen">
+                <div id="playground-console-output">
+                  <div class="console-line comment">// Terminal ready. Select route and press Execute.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="space-y-6">
+            <div class="modal-sidebar-card">
+              <h4 class="font-display text-base font-700 mb-5 text-white pb-3 border-b border-white/5">Tech Stack</h4>
+              <div class="space-y-4">
+                <div>
+                  <div class="text-xs text-slate-500 uppercase tracking-widest mb-2">Frontend</div>
+                  <div id="modal-tech-frontend" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 uppercase tracking-widest mb-2">Backend</div>
+                  <div id="modal-tech-backend" class="flex flex-wrap gap-2"></div>
+                </div>
+                <div>
+                  <div class="text-xs text-slate-500 uppercase tracking-widest mb-2">Database</div>
+                  <div id="modal-tech-db" class="flex flex-wrap gap-2"></div>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 flex flex-col gap-3">
+                <a href="#" id="modal-github" target="_blank" class="btn-secondary w-full justify-center">
+                  <i class="fab fa-github mr-2"></i> View Code
+                </a>
+                <a href="#" id="modal-demo" target="_blank" class="btn-primary w-full justify-center">
+                  <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
