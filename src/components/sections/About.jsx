@@ -44,7 +44,7 @@ export default function About() {
             <div className="reveal reveal-delay-3 gradient-border rounded-3xl overflow-hidden bg-gradient-to-b from-slate-900 to-slate-950 amber-glow">
               <div className="aspect-[4/5] relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(40_90%_55%_/_0.25),transparent_55%)]" />
-                <img src="https://dhyey2402.github.io/portfolio/assets/images/profile-photo.png"
+                <img src={`${import.meta.env.BASE_URL}images/profile-photo.png`}
                   alt="Dhyey Patel"
                   className="absolute inset-0 w-full h-full object-cover object-top mix-blend-luminosity opacity-90"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }} />

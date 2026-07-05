@@ -64,7 +64,7 @@ export const PROJECTS = [
     request_flow: ['Client UI', 'Auth Middleware', 'Doc Engine', 'S3 Storage'],
     capabilities: ['PDF Generation', 'Cryptographic Hashing', 'Real-time Analytics'],
     scale: '10k+ Documents/Month',
-    image: '/images/signly_card_img.png',
+    image: `${import.meta.env.BASE_URL}images/signly_card_img.png`,
     links: { live: 'https://signly-omega.vercel.app/', github: 'https://github.com/dhyey2402/signly', video: 'https://drive.google.com/file/d/1arkGqOHR-bzGpy6xW1E2xEfkYQwBEWMj/view' },
   },
   {
@@ -92,7 +92,7 @@ export const PROJECTS = [
     request_flow: ['Browser', 'Flask Router', 'RBAC Middleware', 'Postgres DB'],
     capabilities: ['Attendance Tracking', 'Payroll Management', 'Grade Aggregation'],
     scale: '5,000+ Users',
-    image: '/projects/edufusion_v3.png',
+    image: `${import.meta.env.BASE_URL}projects/edufusion_v3.png`,
     links: { github: 'https://github.com/dhyey2402/EduFusionERP', live: '#', video: '#' },
   },
   {
@@ -120,7 +120,7 @@ export const PROJECTS = [
     request_flow: ['Cron Job', 'Data Pipeline', 'ML Inference', 'Postgres Cache', 'Client UI'],
     capabilities: ['Predictive Modeling', 'Geospatial Mapping', 'Automated Alerts'],
     scale: 'State-wide Coverage',
-    image: '/projects/jaldarshi_v3.png',
+    image: `${import.meta.env.BASE_URL}projects/jaldarshi_v3.png`,
     links: { github: 'https://github.com/dhyey2402/JalDarshi-AI', live: '#', video: '#' },
   },
   {
@@ -148,7 +148,7 @@ export const PROJECTS = [
     request_flow: ['Next.js Client', 'FastAPI', 'Transaction Manager', 'DB Ledger'],
     capabilities: ['Double-Entry Accounting', 'Inventory Sync', 'Financial Reporting'],
     scale: 'Enterprise Multi-tenant',
-    image: '/images/finora_card_img.png',
+    image: `${import.meta.env.BASE_URL}images/finora_card_img.png`,
     links: { live: 'https://finora-theta-murex.vercel.app/dashboard', github: 'https://github.com/dhyey2402/Finora', video: 'https://drive.google.com/file/d/197bCxwhpxSCKxtHipeuXzS2LOUmeRn3w/view' },
   },
   {
@@ -176,7 +176,7 @@ export const PROJECTS = [
     request_flow: ['Buyer UI', 'DRF API', 'Workflow Engine', 'Notification Service'],
     capabilities: ['Workflow Automation', 'Budget Enforcement', 'Audit Trails'],
     scale: 'Multi-org SaaS',
-    image: '/images/procura_card_img.png',
+    image: `${import.meta.env.BASE_URL}images/procura_card_img.png`,
     links: { github: 'https://github.com/dhyey2402/Procura', live: '#', video: '#' },
   },
   {
@@ -204,7 +204,7 @@ export const PROJECTS = [
     request_flow: ['Edge Camera', 'Embedding Extractor', 'FastAPI Vector Search', 'Next.js UI'],
     capabilities: ['Facial Recognition', 'Vector Search', 'Live Websockets'],
     scale: 'High-Throughput Streams',
-    image: '/images/trackademic_card_img.png',
+    image: `${import.meta.env.BASE_URL}images/trackademic_card_img.png`,
     links: { github: 'https://github.com/dhyey2402/Trackademic-AI', live: '#', video: '#' },
   },
 ];
