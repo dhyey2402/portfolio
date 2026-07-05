@@ -41,7 +41,7 @@ export default function Contact() {
     <section id="contact" ref={ref} className="relative py-28 border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="flex items-center gap-4 mb-6 reveal">
-          <span className="section-num">04 / Contact</span>
+          <span className="section-num">05 / Contact</span>
           <span className="h-px flex-1 bg-slate-800" />
         </div>
 

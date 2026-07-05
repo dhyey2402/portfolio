@@ -14,10 +14,7 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center gap-2">
-          <a href={`mailto:${CONTACT.email}`} className="btn-ghost inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs"><Mail className="w-3.5 h-3.5" /> Email</a>
-          <a href={CONTACT.github} target="_blank" rel="noreferrer" className="btn-ghost inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs"><Github className="w-3.5 h-3.5" /> GitHub</a>
-          <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" className="btn-ghost inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs"><Linkedin className="w-3.5 h-3.5" /> LinkedIn</a>
-          <a href="#home" className="btn-amber inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold"><ArrowUp className="w-3.5 h-3.5" /> Top</a>
+          <a href="#home" className="btn-amber inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold"><ArrowUp className="w-3.5 h-3.5" /> Back to Top</a>
         </div>
       </div>
     </footer>
