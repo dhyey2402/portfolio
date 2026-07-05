@@ -100,6 +100,7 @@ body {
   position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
   border-radius: 9999px; transform: translate(-50%, -50%);
   will-change: transform;
+  opacity: 0;
 }
 .cursor-dot { width: 6px; height: 6px; background: hsl(var(--amber)); transition: opacity 0.2s; }
 .cursor-ring { width: 34px; height: 34px; border: 1px solid hsl(var(--amber) / 0.55); transition: width 0.25s cubic-bezier(.2,.8,.2,1), height 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s; }
