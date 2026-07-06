@@ -61,7 +61,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Terminal & Stats */}
-          <div className="lg:col-span-5 flex flex-col gap-6 pt-10 lg:pt-0">
+          <div className="lg:col-span-5 flex flex-col gap-6 pt-10 lg:pt-0 lg:-mt-16">
             {/* Creative Bento Stats */}
             <div className="grid grid-cols-3 gap-4">
               {HERO_STATS.map((s, i) => {
