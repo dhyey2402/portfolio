@@ -110,6 +110,10 @@ body {
   .cursor-dot, .cursor-ring { display: none; }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .word > span, .marquee-track, .caret { transition: none !important; animation: none !important; transform: none !important; opacity: 1 !important; }
 }
