@@ -51,7 +51,7 @@ export default function Hero() {
               <MagBtn href="#projects" variant="amber">
                 See selected work <ArrowDown className="w-4 h-4" />
               </MagBtn>
-              <MagBtn href="/resume.pdf" target="_blank" variant="ghost">
+              <MagBtn href={`${import.meta.env.BASE_URL}resume.pdf`} target="_blank" variant="ghost">
                 <FileDown className="w-4 h-4" /> Resume
               </MagBtn>
               <MagBtn href="https://github.com/dhyey2402" target="_blank" variant="ghost">

@@ -95,24 +95,7 @@ body {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Custom cursor */
-.cursor-dot, .cursor-ring {
-  position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
-  border-radius: 9999px; transform: translate(-50%, -50%);
-  will-change: transform;
-  opacity: 0;
-}
-.cursor-dot { width: 6px; height: 6px; background: hsl(var(--amber)); transition: opacity 0.2s; }
-.cursor-ring { width: 34px; height: 34px; border: 1px solid hsl(var(--amber) / 0.55); transition: width 0.25s cubic-bezier(.2,.8,.2,1), height 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s; }
-.cursor-ring.expand { width: 60px; height: 60px; background: hsl(var(--amber) / 0.12); }
 
-@media (hover: none), (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none; }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  * { cursor: none !important; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .reveal, .word > span, .marquee-track, .caret { transition: none !important; animation: none !important; transform: none !important; opacity: 1 !important; }

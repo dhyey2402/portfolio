@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Cursor from './components/Cursor';
 import Navbar from './components/Navbar';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
@@ -29,7 +28,6 @@ function Home() {
 
   return (
     <div className="App relative">
-      <Cursor />
       <Navbar />
       <main>
         <Hero />
