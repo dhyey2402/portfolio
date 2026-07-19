@@ -36,7 +36,7 @@ export default function Hero() {
 
         <div className="mt-8 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
-            <h1 className="font-display text-[13vw] leading-[0.92] tracking-tight sm:text-7xl md:text-8xl lg:text-[7.5rem] text-slate-100">
+            <h1 className="font-display text-[13vw] leading-[1.1] tracking-tight sm:text-7xl md:text-8xl lg:text-[7.5rem] text-slate-100">
               <span className="word reveal"><span>Engineering</span></span>
               <br />
               <span className="word reveal reveal-delay-1"><span className="italic text-amber-300">digital</span></span>{' '}
@@ -51,7 +51,7 @@ export default function Hero() {
               <MagBtn href="#projects" variant="amber">
                 See selected work <ArrowDown className="w-4 h-4" />
               </MagBtn>
-              <MagBtn href={`${import.meta.env.BASE_URL}resume.pdf`} target="_blank" variant="ghost">
+              <MagBtn href={`${import.meta.env.BASE_URL}resume.pdf`} download="dhyey_patel_resume.pdf" target="_blank" variant="ghost">
                 <FileDown className="w-4 h-4" /> Resume
               </MagBtn>
               <MagBtn href="https://github.com/dhyey2402" target="_blank" variant="ghost">

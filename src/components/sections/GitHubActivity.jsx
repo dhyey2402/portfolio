@@ -89,7 +89,7 @@ export default function GitHubActivity() {
                 </div>
                 <div className="gh-stat-card">
                   <Rocket className="w-5 h-5 text-amber-400 mb-2 opacity-80" />
-                  <div className="gh-stat-value">3</div>
+                  <div className="gh-stat-value">4</div>
                   <div className="gh-stat-label">Live Deployments</div>
                 </div>
               </div>
