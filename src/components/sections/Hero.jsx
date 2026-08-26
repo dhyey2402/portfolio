@@ -1,11 +1,22 @@
+import { useState } from 'react';
 import { HERO_STATS } from '../../lib/data';
 import { useMagnetic, useReveal } from '../../hooks/usePortfolio';
-import { ArrowDown, Github, FileDown, Terminal, ArrowUpRight, Brain, Rocket, Cloud, Code2 } from 'lucide-react';
+import { ArrowDown, Github, FileDown, Terminal, ArrowUpRight, Brain, Rocket, Cloud, Code2, Eye } from 'lucide-react';
+import ResumePreview from '../ResumePreview';
 
-function MagBtn({ children, href, variant = 'amber', target, ...rest }) {
+function MagBtn({ children, href, variant = 'amber', target, onClick, ...rest }) {
   const ref = useMagnetic(0.28, 100);
-  const base = 'mag inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold';
+  const base = 'mag inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold cursor-pointer';
   const cls = variant === 'amber' ? `${base} btn-amber` : `${base} btn-ghost`;
+
+  if (onClick) {
+    return (
+      <button ref={ref} onClick={onClick} className={cls} {...rest}>
+        {children}
+      </button>
+    );
+  }
+
   return (
     <a ref={ref} href={href} target={target} rel={target ? 'noreferrer' : undefined} className={cls} {...rest}>
       {children}
@@ -15,9 +26,13 @@ function MagBtn({ children, href, variant = 'amber', target, ...rest }) {
 
 export default function Hero() {
   const ref = useReveal();
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
     <section id="home" ref={ref} className="relative min-h-screen pt-28 pb-20 overflow-hidden grain">
+      {/* Resume Preview Modal */}
+      <ResumePreview isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
+
       <div className="hero-bg">
         <div className="grid" />
         <div className="blob b1" />
@@ -43,7 +58,7 @@ export default function Hero() {
               <span className="word reveal reveal-delay-2"><span>experiences.</span></span>
             </h1>
             <p className="reveal reveal-delay-3 mt-8 max-w-xl text-slate-400 text-lg leading-relaxed">
-              Hi, I’m <span className="text-slate-200 font-medium">Dhyey Patel</span> — a backend engineer and AI developer
+              Hi, I'm <span className="text-slate-200 font-medium">Dhyey Patel</span> — a backend engineer and AI developer
               crafting scalable APIs, intelligent systems, and production-grade SaaS.
             </p>
 
@@ -51,8 +66,8 @@ export default function Hero() {
               <MagBtn href="#projects" variant="amber">
                 See selected work <ArrowDown className="w-4 h-4" />
               </MagBtn>
-              <MagBtn href={`${import.meta.env.BASE_URL}resume.pdf`} download="dhyey_patel_resume.pdf" target="_blank" variant="ghost">
-                <FileDown className="w-4 h-4" /> Resume
+              <MagBtn onClick={() => setResumeOpen(true)} variant="ghost">
+                <Eye className="w-4 h-4" /> Resume
               </MagBtn>
               <MagBtn href="https://github.com/dhyey2402" target="_blank" variant="ghost">
                 <Github className="w-4 h-4" /> GitHub
