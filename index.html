@@ -332,16 +332,56 @@
             </div>
 
             <aside class="about__side reveal" style="--d: 0.1s">
-              <figure class="about__photo">
-                <img
-                  src="assets/images/profile-photo.webp"
-                  alt="Dhyey Patel, photographed in Ahmedabad"
-                  width="1024"
-                  height="1024"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption>Ahmedabad, India — 2026</figcaption>
+              <figure class="about__spec" id="aboutSpec" title="Click to catalogue the specimen">
+                <div class="spec__frame">
+                  <header class="spec__head">
+                    <span class="spec__serial">Field notes · No. 026</span>
+                    <span class="spec__star" aria-hidden="true">✦</span>
+                  </header>
+
+                  <h3 class="spec__common">The Builder</h3>
+                  <p class="spec__latin"><span aria-hidden="true">✱</span> Dhyey patel <em>(ahmedabadensis)</em></p>
+
+                  <dl class="spec__rows">
+                    <div class="spec__row">
+                      <dt>Habitat</dt>
+                      <dd>terminals &amp; editors</dd>
+                    </div>
+                    <div class="spec__row">
+                      <dt>Diet</dt>
+                      <dd>hard problems</dd>
+                    </div>
+                    <div class="spec__row">
+                      <dt>Range</dt>
+                      <dd>Ahmedabad ↔ remote</dd>
+                    </div>
+                    <div class="spec__row">
+                      <dt>Status</dt>
+                      <dd><i class="dot" aria-hidden="true"></i>commonly shipping</dd>
+                    </div>
+                  </dl>
+
+                  <p class="spec__behaviour">
+                    <span class="spec__behaviour-label">Observed behaviour —</span>
+                    “Builds end-to-end; refactors in public; migrates toward the most
+                    difficult problem in the room.”
+                  </p>
+
+                  <footer class="spec__foot">
+                    <span>fig. 1 — natural scale</span>
+                    <span>del. et chart. DP · 2026</span>
+                  </footer>
+                </div>
+
+                <svg class="spec__stamp" id="specStamp" viewBox="0 0 120 120" aria-hidden="true">
+                  <defs>
+                    <path id="specArc" d="M60,60 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0" />
+                  </defs>
+                  <circle cx="60" cy="60" r="53" />
+                  <circle cx="60" cy="60" r="25" />
+                  <text class="spec__stamp-ring"><textPath href="#specArc">VERIFIED SPECIMEN ✦ CATALOGUED ✦ </textPath></text>
+                  <text class="spec__stamp-year" x="60" y="65" text-anchor="middle">2026</text>
+                </svg>
               </figure>
 
               <div class="facts">
@@ -472,7 +512,7 @@
                   <span class="work-card__title">VoiceScript AI</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Speech-to-text SaaS with live transcription and secure archives.</span>
+                <span class="work-card__desc">Speech-to-text SaaS — record in the browser, transcribe with Deepgram, keep every transcript searchable and exportable.</span>
                 <span class="work-card__tags">
                   <span>Next.js</span><span>Flask</span><span>Deepgram</span>
                 </span>
@@ -501,7 +541,7 @@
                   <span class="work-card__title">Procura</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Multi-tenant procurement ERP with threshold-based approvals.</span>
+                <span class="work-card__desc">Multi-tenant procurement ERP — isolated organizations, twelve roles, approval chains that escalate with transaction value.</span>
                 <span class="work-card__tags">
                   <span>Django</span><span>DRF</span><span>React</span>
                 </span>
@@ -529,7 +569,7 @@
                   <span class="work-card__title">Finora</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Cloud ERP that keeps inventory and accounting in perfect sync.</span>
+                <span class="work-card__desc">Cloud ERP where every sale moves stock, books the entry and updates the ledgers — inventory and money never drift.</span>
                 <span class="work-card__tags">
                   <span>Next.js</span><span>FastAPI</span><span>PostgreSQL</span>
                 </span>
@@ -558,7 +598,7 @@
                   <span class="work-card__title">CodeSentry</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">AI code review that catches vulnerabilities before production.</span>
+                <span class="work-card__desc">Code review pairing static scanners with LLM analysis — vulnerabilities, complexity hotspots and fixes in one workspace.</span>
                 <span class="work-card__tags">
                   <span>FastAPI</span><span>React</span><span>LLMs</span>
                 </span>
@@ -586,7 +626,7 @@
                   <span class="work-card__title">Zuvio</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Secure media workspace with role-based sharing and signed URLs.</span>
+                <span class="work-card__desc">Media workspace where files upload straight to S3 via presigned URLs — the database only holds metadata and permissions.</span>
                 <span class="work-card__tags">
                   <span>React</span><span>FastAPI</span><span>S3</span>
                 </span>
@@ -615,7 +655,7 @@
                   <span class="work-card__title">Quizora</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Timed assessments with server-scored attempts and performance analytics.</span>
+                <span class="work-card__desc">Assessment platform with a quiz builder, backend-enforced timers and server-side scoring, plus per-student analytics.</span>
                 <span class="work-card__tags">
                   <span>FastAPI</span><span>React</span><span>PostgreSQL</span>
                 </span>
@@ -643,7 +683,7 @@
                   <span class="work-card__title">Signly</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">PDF signing with drag-and-drop fields, public links and an audit trail.</span>
+                <span class="work-card__desc">PDF signing from upload to stamped copy — tokenized public links with expiry and a timestamped audit trail.</span>
                 <span class="work-card__tags">
                   <span>FastAPI</span><span>React</span><span>PyMuPDF</span>
                 </span>
@@ -672,7 +712,7 @@
                   <span class="work-card__title">AegisOne</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Insurance lifecycle — policies, premiums, claims and documents in one system.</span>
+                <span class="work-card__desc">Insurance platform covering the full lifecycle — policy issue and renewal, claims to settlement, premium ledgers.</span>
                 <span class="work-card__tags">
                   <span>Flask</span><span>React</span><span>PostgreSQL</span>
                 </span>
@@ -700,7 +740,7 @@
                   <span class="work-card__title">Scriva</span>
                   <span class="work-card__arrow" aria-hidden="true">↗</span>
                 </span>
-                <span class="work-card__desc">Portfolio CMS with draft-to-publish content and a public API.</span>
+                <span class="work-card__desc">Decoupled publishing engine — a private CMS with a draft-to-published workflow, feeding a public portfolio over one API.</span>
                 <span class="work-card__tags">
                   <span>Django</span><span>React</span><span>Neon</span>
                 </span>
@@ -738,7 +778,7 @@
 
             <a class="archive__row" href="https://github.com/dhyey2402/JalDarshi-AI" target="_blank" rel="noopener">
               <span class="archive__name">JalDarshi AI</span>
-              <span class="archive__what">Flood-risk intelligence with a weather-driven ML ensemble</span>
+              <span class="archive__what">Flood-risk intelligence that feeds weather data through an ML ensemble to score risk</span>
               <span class="archive__stack">Django · React · scikit-learn</span>
               <span class="archive__year">2026</span>
               <span class="archive__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span>
@@ -746,7 +786,7 @@
 
             <a class="archive__row" href="https://github.com/dhyey2402/NexRail-AI" target="_blank" rel="noopener">
               <span class="archive__name">NexRail AI</span>
-              <span class="archive__what">Dynamic railway ETA intelligence for SIH 2026</span>
+              <span class="archive__what">Dynamic railway ETA prediction for SIH 2026 — from model training to a served prediction API</span>
               <span class="archive__stack">FastAPI · React · LightGBM</span>
               <span class="archive__year">2026</span>
               <span class="archive__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span>
@@ -754,7 +794,7 @@
 
             <a class="archive__row" href="https://vocalis-zeta-seven.vercel.app" target="_blank" rel="noopener">
               <span class="archive__name">Vocalis</span>
-              <span class="archive__what">Text-to-speech studio with voice selection</span>
+              <span class="archive__what">Text-to-speech studio — choose a voice, convert text and play back the rendered speech</span>
               <span class="archive__stack">React · Flask · TTS API</span>
               <span class="archive__year">2026</span>
               <span class="archive__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span>
@@ -762,7 +802,7 @@
 
             <a class="archive__row" href="https://github.com/dhyey2402/Trackademic-AI" target="_blank" rel="noopener">
               <span class="archive__name">Trackademic AI</span>
-              <span class="archive__what">AI academic assistant — 1st place, 36h hackathon</span>
+              <span class="archive__what">AI academic assistant — built and demoed in 36 hours; placed 1st at the hackathon</span>
               <span class="archive__stack">Python · SQL · JS</span>
               <span class="archive__year">2026</span>
               <span class="archive__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span>
@@ -770,7 +810,7 @@
 
             <a class="archive__row" href="https://github.com/dhyey2402/EduFusionERP" target="_blank" rel="noopener">
               <span class="archive__name">EduFusionERP</span>
-              <span class="archive__what">Education ERP for students, staff and admins</span>
+              <span class="archive__what">Education ERP with dedicated portals and workflows for students, staff and administrators</span>
               <span class="archive__stack">Flask · SQLAlchemy</span>
               <span class="archive__year">2025</span>
               <span class="archive__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span>
@@ -778,7 +818,7 @@
 
             <a class="archive__row" href="https://github.com/dhyey2402/bold_bytes_Sales_Region_Performance" target="_blank" rel="noopener">
               <span class="archive__name">Sales Analytics</span>
-              <span class="archive__what">Regional sales performance dashboard</span>
+              <span class="archive__what">Regional sales performance dashboards, from raw MySQL data to Pandas-driven reporting</span>
               <span class="archive__stack">Flask · Pandas · MySQL</span>
               <span class="archive__year">2024</span>
               <span class="archive__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></span>

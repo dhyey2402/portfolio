@@ -1303,27 +1303,200 @@ svg {
   color: var(--ink-3);
 }
 
-.about__photo {
+.about__spec {
+  position: relative;
+  cursor: pointer;
+}
+
+.spec__frame {
+  position: relative;
   background: var(--paper-3);
-  border: 1px solid var(--line);
-  padding: 8px;
+  border: 1px solid var(--ink);
+  padding: clamp(22px, 2.4vw, 30px);
 }
 
-.about__photo img {
-  width: 100%;
-  aspect-ratio: 4 / 4.4;
-  object-fit: cover;
-  object-position: 50% 28%;
-  filter: saturate(0.88) contrast(1.02);
+.spec__frame::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(22, 20, 15, 0.22);
+  pointer-events: none;
 }
 
-.about__photo figcaption {
-  padding: 8px 2px 1px;
+.spec__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.spec__serial {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.spec__star {
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.spec__common {
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 2.2vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.spec__latin {
+  margin: 8px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.spec__latin span {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.spec__rows {
+  margin: 18px 0 0;
+  border-top: 1px dotted rgba(22, 20, 15, 0.35);
+}
+
+.spec__row {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dotted rgba(22, 20, 15, 0.25);
+}
+
+.spec__row dt {
+  padding-top: 2px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.spec__row dd {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.spec__behaviour {
+  margin: 16px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.spec__behaviour-label {
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.spec__foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 10px;
+  border-top: 1px dotted rgba(22, 20, 15, 0.35);
   font-family: var(--mono);
   font-size: 8.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
+}
+
+.spec__stamp {
+  position: absolute;
+  top: -6px;
+  right: 2px;
+  width: clamp(96px, 52%, 122px);
+  color: #bf3a2b;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: scale(2) rotate(9deg);
+  pointer-events: none;
+}
+
+.spec__stamp circle {
+  fill: none;
+  stroke: currentColor;
+}
+
+.spec__stamp circle:first-of-type {
+  stroke-width: 2.5;
+}
+
+.spec__stamp circle:last-of-type {
+  stroke-width: 1.25;
+}
+
+.spec__stamp-ring {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 2.6px;
+  fill: currentColor;
+}
+
+.spec__stamp-year {
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 2px;
+  fill: currentColor;
+}
+
+.spec__stamp.is-stamped {
+  opacity: 0.88;
+  transform: scale(1) rotate(-11deg);
+  transition: transform 0.28s cubic-bezier(0.2, 1.6, 0.3, 1), opacity 0.18s ease;
+}
+
+.about__spec.is-thumping .spec__frame {
+  animation: specThump 0.3s ease;
+}
+
+@keyframes specThump {
+  0% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(0.6deg) translateY(2px);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spec__stamp,
+  .spec__stamp.is-stamped {
+    transition: none;
+    transform: scale(1) rotate(-11deg);
+  }
+
+  .about__spec.is-thumping .spec__frame {
+    animation: none;
+  }
 }
 
 .facts {
@@ -3170,10 +3343,6 @@ body.is-locked {
     align-items: start;
   }
 
-  .about__photo {
-    max-width: 340px;
-  }
-
   .facts {
     margin-top: 0;
   }
@@ -3309,10 +3478,6 @@ body.is-locked {
 
   .about__side {
     grid-template-columns: 1fr;
-  }
-
-  .about__photo {
-    max-width: 100%;
   }
 
   .toolkit__grid {
