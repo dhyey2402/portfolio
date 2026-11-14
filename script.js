@@ -1283,4 +1283,19 @@
       showToast();
     });
   }
+  const aboutSpec = $("#aboutSpec");
+  if (aboutSpec) {
+    const specStamp = $("#specStamp");
+    aboutSpec.addEventListener("click", () => {
+      if (!specStamp) return;
+      aboutSpec.classList.remove("is-thumping");
+      specStamp.classList.remove("is-stamped");
+      void specStamp.getBoundingClientRect();
+      specStamp.classList.add("is-stamped");
+      aboutSpec.classList.add("is-thumping");
+    });
+    aboutSpec.addEventListener("animationend", () => {
+      aboutSpec.classList.remove("is-thumping");
+    });
+  }
 })();
