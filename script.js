@@ -534,6 +534,7 @@
 
     setText("#caseIndex", project.index);
     setText("#caseKicker", `Case study — ${project.year}`);
+    setText("#caseStampYear", project.year);
     setText("#caseLabel", project.tag);
     setText("#caseTitle", project.title);
     setText("#caseSubtitle", project.subtitle);
@@ -1283,6 +1284,109 @@
       showToast();
     });
   }
+  const buildDossier = () => {
+    const dossier = $("#dossier");
+    if (!dossier || dossier.dataset.ready) return;
+    dossier.dataset.ready = "1";
+
+    const clean = (el) => (el ? el.textContent.replace(/\s+/g, " ").trim() : "");
+    const host = (url) => {
+      try {
+        const u = new URL(url);
+        return u.host + u.pathname.replace(/\/$/, "");
+      } catch {
+        return url;
+      }
+    };
+
+    const about = $$(".about__statement > p")
+      .map((p) => `<p>${p.innerHTML}</p>`)
+      .join("");
+
+    const jobPoints = $$(".job__points li")
+      .map((li) => `<li>${li.textContent.trim()}</li>`)
+      .join("");
+
+    const cases = Object.values(projects)
+      .map(
+        (p) => `
+        <section class="dossier__case">
+          <span class="dossier__plate">PL. ${p.index} — ${p.year}</span>
+          <h3>${p.title} <span>· ${p.tag}</span></h3>
+          <p class="dossier__sub">${p.subtitle}</p>
+          <p>${p.overview}</p>
+          <ul>${p.highlights.map((h) => `<li>${h}</li>`).join("")}</ul>
+          <p class="dossier__stack"><span>Stack</span> ${p.stack.join(" · ")}</p>
+          <p class="dossier__links"><span>Links</span> ${[p.github && host(p.github), p.live && host(p.live)].filter(Boolean).join(" · ")}</p>
+        </section>`
+      )
+      .join("");
+
+    const archiveRows = $$(".archive__row")
+      .map((row) => {
+        const name = clean(row.querySelector(".archive__name"));
+        const what = clean(row.querySelector(".archive__what"));
+        const stack = clean(row.querySelector(".archive__stack"));
+        const year = clean(row.querySelector(".archive__year"));
+        return `<li><strong>${name}</strong> — ${what} <em>(${stack} · ${year})</em></li>`;
+      })
+      .join("");
+
+    const toolkit = $$(".toolkit__col")
+      .map((col) => {
+        const label = clean(col.querySelector(".toolkit__label"));
+        const items = $$("li", col)
+          .map((li) => li.textContent.trim())
+          .join(" · ");
+        return `<p><span>${label}</span> ${items}</p>`;
+      })
+      .join("");
+
+    dossier.innerHTML = `
+      <header class="dossier__head">
+        <span class="dossier__label">Field dossier — catalogued from the live portfolio</span>
+        <h1>Dhyey Patel</h1>
+        <p class="dossier__contact">Software Product Engineering Intern, Adrine · Ahmedabad, India · dhyeyp060@gmail.com · github.com/dhyey2402</p>
+      </header>
+
+      <section>
+        <h2>Profile</h2>
+        ${about}
+      </section>
+
+      <section>
+        <h2>Experience &amp; education</h2>
+        <p class="dossier__role">${clean($(".job__role"))} — ${clean($(".job__org"))} <em>(${clean($(".job__when"))})</em></p>
+        <ul>${jobPoints}</ul>
+        <p class="dossier__role">${clean($(".edu-card h3"))} · ${clean($(".edu-card__school"))} <em>(${clean($(".edu-card__meta"))})</em></p>
+      </section>
+
+      <section>
+        <h2>Selected work — the collection</h2>
+        ${cases}
+      </section>
+
+      <section class="dossier__archive">
+        <h2>Preserved specimens — archive</h2>
+        <ul>${archiveRows}</ul>
+      </section>
+
+      <section class="dossier__toolkit">
+        <h2>Toolkit</h2>
+        ${toolkit}
+      </section>
+
+      <footer class="dossier__foot">Catalogued ${new Date().getFullYear()} · dhyey2402.github.io/portfolio</footer>
+    `;
+  };
+
+  buildDossier();
+
+  const printBtn = $("#printDossier");
+  if (printBtn) {
+    printBtn.addEventListener("click", () => window.print());
+  }
+
   const aboutSpec = $("#aboutSpec");
   if (aboutSpec) {
     const specStamp = $("#specStamp");

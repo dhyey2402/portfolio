@@ -1000,6 +1000,11 @@ svg {
   font-weight: 500;
 }
 
+.work-card__index::before {
+  content: "PL. ";
+  color: var(--ink-3);
+}
+
 .work-card__media {
   position: relative;
   display: block;
@@ -2007,7 +2012,8 @@ svg {
   gap: 8px;
 }
 
-.contact__socials a {
+.contact__socials a,
+.contact__socials button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2022,11 +2028,18 @@ svg {
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-.contact__socials a .icon {
+.contact__socials button {
+  background: transparent;
+  cursor: pointer;
+}
+
+.contact__socials a .icon,
+.contact__socials button .icon {
   font-size: 13px;
 }
 
-.contact__socials a:hover {
+.contact__socials a:hover,
+.contact__socials button:hover {
   background: var(--white);
   border-color: var(--white);
   color: var(--dark);
@@ -2205,6 +2218,17 @@ body.is-locked {
   font-size: 1.5rem;
   line-height: 1;
   color: var(--case-accent, var(--accent));
+}
+
+.case__ord::before {
+  content: "PL.";
+  margin-right: 0.4em;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.42em;
+  letter-spacing: 0.14em;
+  vertical-align: 0.35em;
+  color: var(--ink-3);
 }
 
 .case__kicker {
@@ -2392,6 +2416,72 @@ body.is-locked {
   inset: 18px -14px -14px 18px;
   border: 1px solid var(--line);
   pointer-events: none;
+}
+
+.case__stamp {
+  position: absolute;
+  top: -20px;
+  right: -16px;
+  width: clamp(88px, 24%, 132px);
+  color: #bf3a2b;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: scale(2.2) rotate(10deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.case__stamp circle {
+  fill: none;
+  stroke: currentColor;
+}
+
+.case__stamp circle:first-of-type {
+  stroke-width: 2.5;
+}
+
+.case__stamp circle:last-of-type {
+  stroke-width: 1.25;
+}
+
+.case__stamp-ring {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 2.6px;
+  fill: currentColor;
+}
+
+.case__stamp-year {
+  font-family: var(--mono);
+  font-size: 15px;
+  letter-spacing: 2px;
+  fill: currentColor;
+}
+
+.case.is-open .case__stamp {
+  animation: caseStampIn 0.5s cubic-bezier(0.2, 1.4, 0.3, 1) 0.45s forwards;
+}
+
+@keyframes caseStampIn {
+  0% {
+    opacity: 0;
+    transform: scale(2.2) rotate(10deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1) rotate(-12deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case.is-open .case__stamp {
+    animation: none;
+    opacity: 0.9;
+    transform: scale(1) rotate(-12deg);
+  }
 }
 
 .case__cover {
@@ -3493,7 +3583,8 @@ body.is-locked {
     gap: 16px;
   }
 
-  .contact__socials a {
+  .contact__socials a,
+  .contact__socials button {
     padding: 9px 12px;
   }
 
@@ -3803,5 +3894,214 @@ body.is-locked {
 
   .portrait__badge svg {
     animation: none;
+  }
+}
+
+/* ==========================================================================
+   Print dossier — recruiter A4 export (populated by script.js, window.print)
+   ========================================================================== */
+
+.dossier {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 15mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  body > *:not(.dossier) {
+    display: none !important;
+  }
+
+  .dossier {
+    display: block;
+    color: #16140f;
+    font-family: var(--sans);
+    font-size: 10.5pt;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .dossier a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .dossier__head {
+    border-bottom: 2pt solid #16140f;
+    padding-bottom: 12pt;
+  }
+
+  .dossier__label {
+    display: block;
+    margin-bottom: 6pt;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #bf3a2b;
+  }
+
+  .dossier h1 {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 28pt;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .dossier__contact {
+    margin: 6pt 0 0;
+    font-family: var(--mono);
+    font-size: 8.5pt;
+    letter-spacing: 0.04em;
+    color: #444;
+  }
+
+  .dossier h2 {
+    margin: 20pt 0 8pt;
+    padding-bottom: 4pt;
+    border-bottom: 1px dotted #8a857a;
+    font-family: var(--mono);
+    font-size: 8.5pt;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    break-after: avoid;
+  }
+
+  .dossier p {
+    margin: 0 0 7pt;
+  }
+
+  .dossier ul {
+    margin: 0 0 7pt;
+    padding-left: 14pt;
+  }
+
+  .dossier li {
+    margin-bottom: 3pt;
+  }
+
+  .dossier strong {
+    font-weight: 600;
+  }
+
+  .dossier__role {
+    font-size: 11pt;
+    font-weight: 500;
+  }
+
+  .dossier__role em {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 9.5pt;
+    color: #555;
+  }
+
+  .dossier ul + .dossier__role,
+  .dossier__xp ul + .dossier__role {
+    margin-top: 10pt;
+  }
+
+  .dossier__case {
+    break-inside: avoid;
+    margin: 0 0 13pt;
+    padding-bottom: 11pt;
+    border-bottom: 1px solid #d8d3c6;
+  }
+
+  .dossier__plate {
+    display: block;
+    margin-bottom: 3pt;
+    font-family: var(--mono);
+    font-size: 7.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #bf3a2b;
+  }
+
+  .dossier__case h3 {
+    margin: 0 0 2pt;
+    font-family: var(--serif);
+    font-size: 14.5pt;
+    font-weight: 400;
+    break-after: avoid;
+  }
+
+  .dossier__case h3 span {
+    font-family: var(--mono);
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .dossier__sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11pt;
+    color: #444;
+  }
+
+  .dossier__case ul {
+    margin-bottom: 6pt;
+  }
+
+  .dossier__stack,
+  .dossier__links,
+  .dossier__toolkit p {
+    margin-bottom: 0;
+    font-family: var(--mono);
+    font-size: 8.5pt;
+    color: #444;
+  }
+
+  .dossier__links {
+    margin-top: 2pt;
+  }
+
+  .dossier__stack span,
+  .dossier__links span,
+  .dossier__toolkit p span {
+    display: inline-block;
+    min-width: 46pt;
+    font-size: 7.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .dossier__toolkit p {
+    margin-bottom: 4pt;
+  }
+
+  .dossier__archive li {
+    margin-bottom: 5pt;
+  }
+
+  .dossier__archive em {
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: 8.5pt;
+    color: #666;
+  }
+
+  .dossier__foot {
+    margin-top: 18pt;
+    padding-top: 8pt;
+    border-top: 1.5pt solid #16140f;
+    font-family: var(--mono);
+    font-size: 8pt;
+    letter-spacing: 0.08em;
+    color: #666;
   }
 }

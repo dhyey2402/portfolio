@@ -82,6 +82,10 @@
           <rect x="9" y="9" width="12" height="12" rx="2" />
           <path d="M5 15V5a2 2 0 0 1 2-2h10" />
         </symbol>
+        <symbol id="i-print" viewBox="0 0 24 24">
+          <path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+          <rect x="6" y="14" width="12" height="7" />
+        </symbol>
         <symbol id="i-close" viewBox="0 0 24 24">
           <path d="M6 6l12 12M18 6 6 18" />
         </symbol>
@@ -484,8 +488,8 @@
             <div class="section__head-row">
               <h2 class="section__title reveal">Things I've <em>shipped.</em></h2>
               <p class="section__intro reveal" style="--d: 0.08s">
-                Nine builds that best show how I think: data-heavy backends, AI in the loop, and
-                interfaces that stay out of the way.
+                Nine specimens, catalogued from two years of shipping — data-heavy backends, AI in
+                the loop, and interfaces that stay out of the way.
               </p>
             </div>
           </div>
@@ -749,8 +753,8 @@
           </div>
 
           <p class="work__hint mono-label">
-            <span class="work__hint-desktop">Hover for a closer look — click for the full case study</span>
-            <span class="work__hint-mobile">Tap a project for the full case study</span>
+            <span class="work__hint-desktop">Specimens shown at natural scale — click one for the full field notes</span>
+            <span class="work__hint-mobile">Tap a specimen for the full field notes</span>
           </p>
         </div>
       </section>
@@ -766,14 +770,14 @@
               <h2 class="section__title reveal">More <em>builds.</em></h2>
             </div>
             <p class="section__intro reveal" style="--d: 0.08s">
-              Hackathon sprints, internal tools, and platforms that taught me something. All public,
-              all built end-to-end.
+              Preserved specimens — hackathon sprints, internal tools, and platforms that taught me
+              something. All public, all built end-to-end.
             </p>
           </div>
 
           <div class="archive__table reveal">
             <div class="archive__head mono-label" aria-hidden="true">
-              <span>Project</span><span>What it does</span><span>Stack</span><span>Year</span><span></span>
+              <span>Specimen</span><span>Field notes</span><span>Stack</span><span>Year</span><span></span>
             </div>
 
             <a class="archive__row" href="https://github.com/dhyey2402/JalDarshi-AI" target="_blank" rel="noopener">
@@ -984,6 +988,10 @@
                 <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
                 Résumé
               </a>
+              <button type="button" id="printDossier">
+                <svg class="icon" aria-hidden="true"><use href="#i-print" /></svg>
+                Print dossier
+              </button>
             </div>
 
             <div class="contact__meta">
@@ -1041,6 +1049,15 @@
             <figure class="case__visual">
               <div class="case__cover" id="caseCover"></div>
               <figcaption class="case__visual-note" id="caseVisualNote">2026</figcaption>
+              <svg class="case__stamp" viewBox="0 0 120 120" aria-hidden="true">
+                <defs>
+                  <path id="caseStampArc" d="M60,60 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0" />
+                </defs>
+                <circle cx="60" cy="60" r="53" />
+                <circle cx="60" cy="60" r="25" />
+                <text class="case__stamp-ring"><textPath href="#caseStampArc">VERIFIED SPECIMEN ✦ SHIPPED ✦ </textPath></text>
+                <text class="case__stamp-year" x="60" y="65" text-anchor="middle" id="caseStampYear">2026</text>
+              </svg>
             </figure>
           </section>
 
@@ -1144,6 +1161,8 @@
     </div>
 
     <div class="toast" id="toast" role="status" aria-live="polite">Email copied — talk soon.</div>
+
+    <div class="dossier" id="dossier" aria-hidden="true"></div>
 
     <script src="script.js"></script>
   </body>
